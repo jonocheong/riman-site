@@ -1,0 +1,153 @@
+
+
+@font-face {
+    font-family: 'EditorialNew';
+    src: url(fonts/PPEditorialNew-Ultralight.ttf) format('truetype');
+  }
+
+@font-face {
+    font-family: 'NeueMontreal';
+    src: url('fonts/PPNeueMontreal-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'EditorialItallic';
+    src: url('fonts/PPEditorialNew-UltralightItalic.ttf') format('truetype');
+}
+
+
+
+
+ 
+html {
+    background-color: #F3F2EC;
+}
+
+
+  body {
+    margin: 0;
+    font-family: 'EditorialNew', sans-serif;
+    
+    
+}
+
+
+/*Banner */
+
+.hero__banner {
+    text-align: center;
+    background-color: orange;
+    margin-top: 0;
+    padding-top: 0;
+    opacity: ;
+}
+
+
+.hero__banner-para {
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-family: 'NeueMontreal';
+    font-size: 0.9rem;
+}
+
+
+
+
+.header__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+}
+
+
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #F3F2EC;
+   
+   
+    
+}
+.header__logo {
+    font-size: 2rem;
+    font-family: 'EditorialItallic';
+    color: black;
+    
+}
+
+
+
+
+.nav__list {
+    font-family: 'NeueMontreal';
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+
+}
+.nav__list a {
+    text-decoration: none;
+    color: black;
+    
+}
+
+/* Hero Section */
+.hero {
+    text-align: left;
+    height: 100vh;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #F3F2EC;
+    
+}
+
+
+
+
+.hero__title {
+    font-size: 5rem;
+    margin: 0;
+    line-height: 1;
+    color: white;
+    
+}
+
+.hero__title2 {
+    font-family: 'EditorialItallic';
+    font-size: 5rem;
+    margin: 0;
+    line-height: 1;
+    color: white;
+    
+}
+
+
+.hero__subtitle {
+    font-family: 'NeueMontreal';
+    font-size: 1.5rem;
+    margin: 0;
+    color: white;
+    
+}
+
+.subheader__wrapper {
+    margin-top: 5rem;
+}
+
+
+
+
+
+
+
+    
