@@ -36,19 +36,20 @@ html {
 
 .hero__banner {
     text-align: center;
-    background-color: orange;
+    background-color: #074571;
     margin-top: 0;
     padding-top: 0;
-    opacity: ;
+    
 }
 
 
 .hero__banner-para {
     margin: 0;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
     font-family: 'NeueMontreal';
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    color: white;
 }
 
 
@@ -77,7 +78,7 @@ html {
     
 }
 .header__logo {
-    font-size: 2rem;
+    font-size: 1.25rem;
     font-family: 'EditorialItallic';
     color: black;
     
@@ -85,19 +86,62 @@ html {
 
 
 
-
+/* Nav List Styling */
 .nav__list {
     font-family: 'NeueMontreal';
     list-style: none;
     display: flex;
-    gap: 3rem;
-
+    gap: 3rem; /* Keeps them in a row */
+    overflow: hidden;
+    position: relative;
+    padding: 0;
 }
+
+/* Nav Links */
+.nav__list li {
+    display: inline-block; /* Ensures no stacking */
+}
+
+/* Style the Links */
 .nav__list a {
+    position: relative;
     text-decoration: none;
     color: black;
-    
+    font-size: 0.9rem;
+    display: inline-block;
+    overflow: hidden;
+    padding: 5px 0; /* Provides spacing for underline */
 }
+
+/* Thin Underline Effect */
+.nav__list a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0px; /* Adjust underline position */
+    width: 0%;
+    height: 1px; /* Ultra-thin underline */
+    background-color: black;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* Expand Underline on Hover */
+.nav__list a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Retract Underline on Hover Out */
+.nav__list a:not(:hover)::after {
+    width: 0%;
+    left: 50%;
+}
+
+
+
+
+
+
 
 /* Hero Section */
 .hero {
@@ -108,11 +152,14 @@ html {
     position: relative;
     overflow: hidden;
     background-color: #F3F2EC;
+    z-index: 1;
     
 }
 
 
-
+.header__wrapper {
+    margin-top: 1rem;
+}
 
 .hero__title {
     font-size: 5rem;
@@ -147,7 +194,64 @@ html {
 
 
 
+/* Background Scrolling Track */
+.hero__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.hero__bg-track {
+    display: flex;
+    width: max-content; /* Allows continuous scrolling */
+    height: 100%;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.hero__bg-track img {
+    height: 100%;
+    width: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    flex-shrink: 0; /* Prevents images from squishing */
+    filter: brightness(90%);
+}
 
 
 
+
+.about {
+    height: 100vh;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #F3F2EC;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
     
+.about__smallwrapper {
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.about h2 {
+    font-size: 2rem;
+    width: 40%;
+    text-align: center;
+}
+
+.about p {
+    width: 40%;
+    text-align: center;
+}

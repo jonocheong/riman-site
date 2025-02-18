@@ -83,19 +83,70 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    // === Smooth Infinite Scrolling Background Effect ===
-    gsap.to(".hero__bg-track", {
-        x: "-50%",
-        duration: 30,
-        ease: "linear",
-        repeat: -1,
-        modifiers: {
-            x: gsap.utils.wrap(-window.innerWidth, 0), // Ensures a seamless loop
-        },
+    // === Infinite Horizontal Scroll Effect ===
+   
+    
+        let track = document.querySelector(".hero__bg-track");
+        let images = document.querySelectorAll(".hero__bg-track img");
+    
+        let totalWidth = 0; // Ensure totalWidth is globally defined
+    
+        // Function to check when all images are loaded
+        function imagesLoaded(callback) {
+            let loadedCount = 0;
+            images.forEach((img) => {
+                img.onload = () => {
+                    loadedCount++;
+                    if (loadedCount === images.length) {
+                        callback(); // Run callback when all images are loaded
+                    }
+                };
+            });
+        }
+    
+        // Function to start the carousel animation
+        function startCarousel() {
+            images = document.querySelectorAll(".hero__bg-track img"); // Update node list (includes duplicates)
+            images.forEach((img) => (totalWidth += img.offsetWidth)); // Calculate total width
+    
+            console.log("Total Width of Images:", totalWidth); // Debugging: Check if width is calculated
+    
+            // Set track width dynamically to fit all images
+            track.style.width = `${totalWidth}px`;
+    
+            // GSAP Animation for Infinite Scroll
+            gsap.to(track, {
+                x: `-${totalWidth / 2}px`, // Moves left by half its width
+                duration: 30, // Adjust speed
+                ease: "linear",
+                repeat: -1, // Infinite loop
+                modifiers: {
+                    x: gsap.utils.wrap(-totalWidth, 0), // Ensures seamless loop
+                },
+            });
+        }
+    
+        // Duplicate images dynamically for seamless looping
+        images.forEach((img) => {
+            let clone = img.cloneNode(true);
+            track.appendChild(clone);
+        });
+    
+        // Run the function when all images are loaded
+        imagesLoaded(startCarousel);
     });
+    
 
-    // === Prevent Any Animation Glitches on Load ===
-    window.addEventListener("load", () => {
-        ScrollTrigger.refresh();
+//nav link animation
+
+
+
+    document.querySelectorAll(".nav__list a").forEach(link => {
+        link.addEventListener("mouseenter", () => {
+            gsap.to(link, { y: -1, duration: 0.2, ease: "power2.out" }); // Slight lift effect
+        });
+    
+        link.addEventListener("mouseleave", () => {
+            gsap.to(link, { y: 0, duration: 0.2, ease: "power2.out" }); // Reset position
+        });
     });
-});
